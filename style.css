@@ -1357,6 +1357,12 @@ footer {
         font-size: 28px;
     }
 
+    .logo img {
+        max-width: 90px;
+        max-height: 90px;
+        object-fit: contain;
+    }
+
     .navbar ul {
         gap: 24px;
     }
@@ -3524,3 +3530,4 @@ input:checked+.lang-slider:before {
 .language-switch.is-active:active .language-knob {
     transform: translateX(42px) scale(0.95);
 }
+
