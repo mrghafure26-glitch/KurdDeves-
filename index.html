@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kurd Deves</title>
+
+    <script>
+        /* Apply saved language before paint to prevent a flash of the wrong language/direction */
+        (function () {
+            try {
+                var l = localStorage.getItem('lang') || 'en';
+                var el = document.documentElement;
+                el.setAttribute('lang', l);
+                el.setAttribute('dir', l === 'ku' ? 'rtl' : 'ltr');
+            } catch (e) { }
+        })();
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto Kufi Arabic:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+
+</head>
+
+<body>
+
+    <!-- ================= Star Background for Dark Mode ================= -->
+    <div id="stars-container">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+    <!-- ================= Scroll Progress Bar ================= -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- ================= Page Loader ================= -->
+    <div class="loader" id="page-loader">
+        <div class="loader-blobs">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+        <div class="loader-text">Kurd Deves</div>
+    </div>
+
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="./images/kurddeveslogo.png" alt="Kurd Deves logo">
+                <h2>Kurd Deves</h2>
+            </div>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#home" class="nav-link active" data-i18n="nav.home">Home</a></li>
+                    <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+                    <li><a href="#services" class="nav-link" data-i18n="nav.services">Services</a></li>
+                    <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+                    <li><a href="#contact-section" class="nav-link" data-i18n="nav.getInTouch">Get In Touch</a></li>
+                    <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+                </ul>
+            </nav>
+
+
+            <!-- user Icone  -->
+
+
+            <div class="useraccount">
+                <!-- <div class="user-icon"><i class="fa-regular fa-user"></i></div> -->
+
+                <div class="header-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" id="header-search-input" placeholder="Search..." data-i18n-placeholder="common.search"
+                        aria-label="Search Kurd Deves" data-i18n-aria="common.searchAria">
+                    <kbd class="search-kbd">/</kbd>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <div class="language-switch-wrapper">
+                    <button class="language-switch header-language-switch" type="button" aria-pressed="false" aria-label="Switch to Kurdish">
+                      <span class="language-label language-label-en">EN</span>
+                      <span class="language-track" aria-hidden="true">
+                        <span class="language-knob">
+                          <span class="flag flag-en" aria-hidden="true"></span>
+                          <span class="flag flag-ku" aria-hidden="true"></span>
+                        </span>
+                      </span>
+                      <span class="language-label language-label-ku">KU</span>
+                    </button>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+                    <i class="fa-solid fa-sun" id="themeIcon"></i>
+                </button>
+            </div>
+            <button class="burger" id="burger" aria-label="Open menu" data-i18n-aria="common.openMenu" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ================= Sidebar mobile navigation ================= -->
+
+    <!-- Backdrop: dims page content when sidebar is open -->
+    <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+    <aside class="nav-overlay" id="navigation-panel" aria-hidden="true">
+        <header class="nav-header">
+           <div class="brand" data-i18n="sidebar.menu">Menu</div>
+            <button class="close-button" id="navClose" type="button" aria-label="Close navigation" data-i18n-aria="sidebar.close">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
+            </button>
+        </header>
+
+
+
+
+        <form class="sidebar-search" role="search" id="sidebar-search-form">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="sidebar-search-input" placeholder="Search..." data-i18n-placeholder="common.search" aria-label="Search" data-i18n-aria="common.searchAria" />
+            <kbd class="search-kbd">/</kbd>
+        </form>
+
+
+
+
+        <div class="nav-divider"></div>
+
+        <div class="sidebar-lang">
+            <div class="language-switch-wrapper">
+                <button class="language-switch sidebar-language-switch" type="button" aria-pressed="false" aria-label="Switch to Kurdish">
+                  <span class="language-label language-label-en">EN</span>
+                  <span class="language-track" aria-hidden="true">
+                    <span class="language-knob">
+                      <span class="flag flag-en" aria-hidden="true"></span>
+                      <span class="flag flag-ku" aria-hidden="true"></span>
+                    </span>
+                  </span>
+                  <span class="language-label language-label-ku">KU</span>
+                </button>
+            </div>
+        </div>
+
+        <p class="eyebrow" data-i18n="sidebar.navigation">Navigation</p>
+
+        <nav class="menu" aria-label="Primary navigation">
+            <a href="#home" data-i18n="nav.home">Home</a>
+            <a href="#about" data-i18n="nav.aboutUs">About Us</a>
+            <a href="#services" data-i18n="nav.services">Services</a>
+            <a href="#projects" data-i18n="nav.projects">Projects</a>
+            <a href="#contact-section" data-i18n="nav.getInTouch">Get In Touch</a>
+            <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </nav>
+
+    </aside>
+
+
+
+
+
+
+
+
+
+
+
+    <section class="hero">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="dots"></div>
+
+
+        <div id="home"></div>
+
+        <div class="container hero-container">
+            <div class="hero-left">
+                <h1 class="hero-animate" data-delay="0" data-i18n="hero.title" data-i18n-html="true">
+                    Welcome <br>
+                    to <br>
+                    <span>Kurd Deves</span>
+                </h1>
+                <p class="hero-animate" data-delay="200" data-i18n="hero.paragraph">
+                    We are a team of passionate developers
+                    and designers crafting high-performance
+                    websites and digital solutions.
+                </p>
+                <div class="hero-buttons hero-animate" data-delay="400">
+                    <a href="projects.html" class="btn-primary">
+                        <span data-i18n="hero.viewWork">View Our Work</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact-section" class="btn-secondary" data-i18n="hero.getInTouch">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+            <div class="hero-right hero-animate" data-delay="300">
+                <img src="images/laptop.png" alt="Laptop">
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ================= Trusted Brands ================= -->
+
+
+    <section class="brands reveal">
+       <div class="container brands-container">
+           <div class="brands-title">
+               <p data-i18n="brands.title" data-i18n-html="true">
+                   TRUSTED BY <br>
+                   INNOVATIVE <br>
+                   BRANDS
+               </p>
+           </div>
+           <div class="brand-item">
+               chihan group
+           </div>
+           <div class="brand-item">
+               Sarwaran
+           </div>
+           <div class="brand-item">
+               lazoo
+           </div>
+       </div>
+   </section>
+
+
+
+
+  <!-- ================= ABOUT ================= -->
+   <section class="about reveal" id="about">
+       <div class="container">
+           <span class="section-tag" data-i18n="about.tag">
+               WHO ARE KURD DEVES
+           </span>
+           <h2 class="section-title" data-i18n="about.title">
+               About Us
+           </h2>
+           <p class="section-text" data-i18n="about.text">
+               Kurd Deves is a tech-driven group specializing in bespoke web
+               development and Artificial Intelligence.
+               We help businesses scale by providing smart,
+               efficient and innovative digital solutions tailored
+               to your unique goals.
+               Your vision, our code, and the power of AI.
+           </p>
+       </div>
+   </section>
+   <!-- ================= SERVICES ================= -->
+   <section class="services reveal" id="services">
+       <div class="container">
+           <span class="section-tag" data-i18n="services.tag">
+               WHAT WE DO
+           </span>
+           <h2 class="section-title" data-i18n="services.title">
+               Services We Provide
+           </h2>
+            <p class="section-text" data-i18n="services.text">
+               End-to-end digital solutions to bring your ideas to life.
+          </p>
+          <div class="service-grid">
+              <div class="service-card reveal" data-delay="0">
+                  <div class="icon"><i class="fa-solid fa-code"></i></div>
+                   <h3 data-i18n="services.webdev.title">Web Development</h3>
+                   <p data-i18n="services.webdev.text">
+                       Custom websites and web applications built with modern technologies.
+                   </p>
+                   <a href="#"><span data-i18n="services.learnMore">Learn More</span> →</a>
+               </div>
+               <div class="service-card active reveal" data-delay="100">
+                   <div class="icon"><i class="fa-solid fa-pen-ruler"></i></div>
+                   <h3 data-i18n="services.ux.title">UI/UX Design</h3>
+                   <p data-i18n="services.ux.text">
+                        User-centered designs that are modern, intuitive and impactful.
+                  </p>
+                   <a href="#"><span data-i18n="services.learnMore">Learn More</span> →</a>
+                </div>
+             <div class="service-card reveal" data-delay="200">
+                    <div class="icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                    <h3 data-i18n="services.responsive.title">Responsive Design</h3>
+                  <p data-i18n="services.responsive.text">
+                        Pixel-perfect responsive websites that work on every device.
+                    </p>
+                   <a href="#"><span data-i18n="services.learnMore">Learn More</span> →</a>
+                </div>
+                <div class="service-card active reveal" data-delay="300">
+                    <div class="icon"><i class="fa-solid fa-cloud"></i></div>
+                    <h3 data-i18n="services.maintenance.title">Maintenance & Support</h3>
+                    <p data-i18n="services.maintenance.text">
+                       Ongoing support and maintenance to keep your projects running.
+                    </p>
+                    <a href="#"><span data-i18n="services.learnMore">Learn More</span> →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <!-- ================= Projects ================= -->
+
+    <section class="projects reveal" id="projects">
+        <div class="container">
+            <div class="projects-header">
+                <div>
+                    <span class="section-tag" data-i18n="projects.tag">
+                        OUR WORK
+                    </span>
+                    <h2 class="section-title" data-i18n="projects.title">
+                        Featured Projects
+                    </h2>
+                    <p class="section-text" data-i18n="projects.text">
+                        A glimpse into the solutions we've built for our clients.
+                    </p>
+                </div>
+                <a href="projects.html" class="projects-btn">
+                    <span data-i18n="projects.viewAll">View All Projects</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card reveal" data-delay="0">
+                    <img src="images/developing.JPG" alt="Analytics Dashboard web application project screenshot">
+                    <div class="project-content">
+                        <h3>Analytics Dashboard</h3>
+                        <span data-i18n="projects.webApp">Web Application</span>
+                    </div>
+                </div>
+                <div class="project-card reveal" data-delay="100">
+                    <img src="images/web app.JPG" alt="SaaS Platform web application project screenshot">
+                    <div class="project-content">
+                        <h3>SaaS Platform</h3>
+                        <span data-i18n="projects.webApp">Web Application</span>
+                    </div>
+                </div>
+                <div class="project-card reveal" data-delay="200">
+                    <img src="images/e comercial.JPG" alt="E-Commerce website development project screenshot">
+                    <div class="project-content">
+                        <h3>E-Commerce Website</h3>
+                        <span data-i18n="projects.webDev">Web Development</span>
+                    </div>
+                </div>
+                <div class="project-card reveal" data-delay="300">
+                    <img src="images/profilio.JPG" alt="Creative Portfolio UI/UX design project screenshot">
+                    <div class="project-content">
+                        <h3>Creative Portfolio</h3>
+                        <span data-i18n="projects.uxDesign">UI/UX Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="technologies reveal">
+        <div class="container tech-row">
+            <span data-i18n="tech.title">TECHNOLOGIES WE USE</span>
+            <div>React</div>
+            <div>Next.js</div>
+            <div>TypeScript</div>
+            <div>Node.js</div>
+            <div>Tailwind CSS</div>
+            <div>MongoDB</div>
+            <div>Docker</div>
+            <div>GitHub</div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ================= CTA ================= -->
+
+
+
+
+
+
+
+    <section class="cta reveal">
+        <div class="container cta-box">
+            <div class="cta-image">
+                <img src="images/boy with vr.JPG" alt="Developer">
+            </div>
+            <div class="cta-content">
+                <span class="section-tag" data-i18n="cta.tag">
+                    LET'S BUILD SOMETHING GREAT TOGETHER
+                </span>
+                <h2 data-i18n="cta.title">
+                    Have a project in mind?
+                </h2>
+                <p data-i18n="cta.text" data-i18n-html="true">
+                    We're ready to turn your ideas into
+                    powerful digital products.
+                    <br><br>
+                    Let's collaborate!
+                </p>
+
+                <a href="#" class="btn-primary">
+                    <span data-i18n="cta.startProject">Start a Project</span> →
+                </a>
+            </div>
+            <div class="cta-features">
+
+
+                <div class="feature">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span data-i18n="cta.feature1">Clean & Scalable Code</span>
+                </div>
+                <div class="feature">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span data-i18n="cta.feature2">On-Time Delivery</span>
+                </div>
+
+                <div class="feature">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span data-i18n="cta.feature3">Transparent Communication</span>
+                </div>
+                <div class="feature">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span data-i18n="cta.feature4">Client Satisfaction First</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+
+    <section class="contact" id="contact-section">
+        <div class="container">
+            <div class="contact-header reveal">
+                <span class="section-tag" data-i18n="contact.tag">GET IN TOUCH</span>
+                <h2 class="section-title" data-i18n="contact.title">Let's Work Together</h2>
+                <p class="section-text" data-i18n="contact.text">
+                    Have a project in mind or just want to say hello? Drop us a message
+                    and we'll get back to you within 24 hours.
+                </p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h4 data-i18n="contact.emailTitle">Email Us</h4>
+                            <p>hello@kurddeves.com</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <h4 data-i18n="contact.phoneTitle">Call Us</h4>
+                            <p>+964 567 8900</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+
+            
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h4 data-i18n="contact.visitTitle">Visit Us</h4>
+                            <p data-i18n="contact.location">Kurdistan - Hawler</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form reveal" id="contactForm" novalidate>
+
+                    <div class="form-group">
+                        <label class="sr-only" for="name" data-i18n="contact.nameLabel">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" data-i18n-placeholder="contact.namePlaceholder" autocomplete="name" minlength="2" maxlength="100" aria-describedby="nameError" aria-invalid="false" required>
+                        <span class="error-msg" id="nameError" aria-live="polite"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="sr-only" for="email" data-i18n="contact.emailLabel">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" data-i18n-placeholder="contact.emailPlaceholder" autocomplete="email" maxlength="254" aria-describedby="emailError" aria-invalid="false" required>
+                        <span class="error-msg" id="emailError" aria-live="polite"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="sr-only" for="subject" data-i18n="contact.subjectLabel">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Subject" data-i18n-placeholder="contact.subjectPlaceholder" autocomplete="off" maxlength="150">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="message" data-i18n="contact.messageLabel">Your Message</label>
+                        <textarea id="message" name="message" placeholder="Your Message" data-i18n-placeholder="contact.messagePlaceholder" rows="5" minlength="10" maxlength="5000" aria-describedby="messageError" aria-invalid="false" required></textarea>
+                        <span class="error-msg" id="messageError" aria-live="polite"></span>
+                    </div>
+                    <div class="contact-honeypot" aria-hidden="true">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn-primary contact-submit" id="contactSubmit">
+                        <span id="contactSubmitText" data-i18n="contact.send">Send Message</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+                        <i class="fa-solid fa-circle-check" id="formStatusIcon"></i>
+                        <span id="formStatusText" data-i18n="contact.success">Thank you! Your message has been sent.</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <footer id="contact">
+        <div class="container footer-grid">
+            <div>
+                <h2>KURD DEVES</h2>
+                <p data-i18n="footer.tagline">
+                    Building high-performance websites
+                    and digital solutions that empower
+                    businesses to grow.
+                </p>
+            </div>
+
+
+
+
+            <div>
+                <h3 data-i18n="footer.quickLinks">Quick Links</h3>
+
+                <ul>
+                    <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                    <li><a href="#about" data-i18n="nav.aboutUs">About Us</a></li>
+                    <li><a href="#services" data-i18n="nav.services">Services</a></li>
+                    <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+                    <li><a href="#contact-section" data-i18n="nav.getInTouch">Get In Touch</a></li>
+                    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 data-i18n="footer.servicesTitle">Services</h3>
+                <ul>
+                    <li data-i18n="services.webdev.title">Web Development</li>
+                    <li data-i18n="projects.uxDesign">UI/UX Design</li>
+                    <li data-i18n="services.responsive.title">Responsive Design</li>
+                    <li data-i18n="footer.maintenance">Maintenance</li>
+                </ul>
+            </div>
+            <div>
+
+
+
+
+
+                <h3 data-i18n="footer.contactTitle">Contact Us</h3>
+
+
+
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        hello@kurddeves.com
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        +964 567 8900
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span data-i18n="footer.location">Kurdistan - Hawler</span>
+                    </li>
+                </ul>
+
+
+
+
+
+                <div>
+                    <h3 data-i18n="footer.followUs">Follow Us</h3>
+                    <div class="socials">
+                        <a href="#">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa-brands fa-dribbble"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom container">
+            <p data-i18n="footer.rights">
+                © 2024 KurdDeves. All rights reserved.
+            </p>
+            <div>
+                <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+                <a href="#" data-i18n="footer.terms">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= Back to Top ================= -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top" data-i18n-aria="common.backToTop">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+
+
+
+<script src="i18n.js"></script>
+<script src="script.js"></script>
+
+</body>
+
+
+
+
+
+</html>
