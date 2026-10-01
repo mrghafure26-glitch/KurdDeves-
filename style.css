@@ -226,9 +226,9 @@ html[dir="rtl"] kbd {
 }
 
 .logo img {
-    width: 18%;
-    height: 18%;
-    max-width: fit-content;
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
 }
 
 /* Navigation */
@@ -1610,6 +1610,7 @@ footer {
     .logo img {
         width: 40px;
         height: 40px;
+        object-fit: contain;
     }
 
     .hero-left h1 {
@@ -1731,6 +1732,7 @@ footer {
     .logo img {
         width: 32px;
         height: 32px;
+        object-fit: contain;
     }
 
     /* ── Full-screen nav at 480px ──
