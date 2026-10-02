@@ -226,8 +226,8 @@ html[dir="rtl"] kbd {
 }
 
 .logo img {
-    width: 45px;
-    height: 45px;
+    max-width: 90px;
+    max-height: 90px;
     object-fit: contain;
 }
 
@@ -3530,4 +3530,5 @@ input:checked+.lang-slider:before {
 .language-switch.is-active:active .language-knob {
     transform: translateX(42px) scale(0.95);
 }
+
 
